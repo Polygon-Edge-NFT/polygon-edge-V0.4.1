@@ -135,6 +135,7 @@ type Contract struct {
 	Address     types.Address
 	Origin      types.Address
 	Caller      types.Address
+	Creator     types.Address
 	Depth       int
 	Value       *big.Int
 	Input       []byte
@@ -175,7 +176,7 @@ func NewContractCreation(
 	code []byte,
 ) *Contract {
 	c := NewContract(depth, origin, from, to, value, gas, code)
-
+	c.Creator = from
 	return c
 }
 
